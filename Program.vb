@@ -7,13 +7,14 @@ Imports Microsoft.AspNetCore
 Imports Microsoft.AspNetCore.Hosting
 Imports Microsoft.Extensions.Configuration
 Imports Microsoft.Extensions.Logging
- 
+
 Module Program
     Sub Main(args As String())
-        Console.WriteLine("Hello ASP.NET MVC and VB World!")
-        Dim host = WebHost.CreateDefaultBuilder(args).
-            UseStartup(Of Startup)().
-            UseUrls("http://*:5000").Build()
-        host.Run()
+        CreateWebHostBuilder(args).Build.Run()
     End Sub
+
+    Function CreateWebHostBuilder(args As String()) As IWebHostBuilder
+        return WebHost.CreateDefaultBuilder(args).
+            UseStartup(Of Startup)()
+    End Function
 End Module
